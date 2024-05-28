@@ -56,3 +56,77 @@ const Index = () => {
     </div>
   );
 };
+// Inline styles for elements within the Index component
+const styles = {
+  container: {
+    position: "relative",
+    width: "100vw",
+    height: "100vh",
+    overflow: "hidden",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    backgroundColor: "#000",
+    backgroundImage: "url(/dota2.jpeg)", // Adding the background image
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
+  video: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    zIndex: 1,
+  },
+  overlay: {
+    position: "absolute",
+    bottom: "10%", // Adjusted to place the button closer to the bottom
+    left: "50%",
+    transform: "translateX(-50%)",
+    zIndex: 2,
+    backgroundColor: "#000",
+  },
+  button: {
+    padding: "20px 40px",
+    fontSize: "20px",
+    color: "#fff",
+    background: "#808080",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+  },
+  chatContainer: {
+    position: "relative",
+    zIndex: 3,
+    width: "100%",
+    minHeight: "100vh", // Ensure it takes at least the full viewport height
+    maxHeight: "100%", // Adjust this as needed, or remove it if you want unlimited height
+    padding: "20px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.😎",
+    overflowY: "auto", // Enable vertical scrolling if content overflows
+  },
+  shopkeeperImage: {
+    marginBottom: "20px",
+  },
+  heading: {
+    color: "#fff",
+    fontSize: "2rem",
+    margin: "20px 0 10px 0",
+  },
+  description: {
+    color: "#ccc",
+    textAlign: "center",
+    maxWidth: "900px",
+    marginBottom: "20px",
+  },
+};
+
+// Export the Index component
+export default Index;
