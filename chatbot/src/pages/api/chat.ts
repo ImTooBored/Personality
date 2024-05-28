@@ -58,3 +58,36 @@ const safetySettings = [
     threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
   },
 ];
+// Handler function to process incoming requests
+export default async function handler(req, res) {
+  // Check if the request method is POST
+  if (req.method !== "POST") {
+    // If not, return an error response
+    res.status(405).json({ error: "Method not allowed" });
+    return;
+  }
+
+  // Extract the prompt from the request body
+  const { prompt } = req.body;
+
+  try {
+    // Start a chat session with the generative model
+    const chatSession = model.startChat({
+      generationConfig,
+      safetySettings,
+      history: [{ role: "user", parts: [{ text: prompt }] }], // Provide user prompt as history
+    });
+
+    // Send the prompt to the chat session and wait for the response
+    const result = await chatSession.sendMessage(prompt);
+    // Extract the response text from the result
+    const responseText = await result.response.text();
+
+    // Send the response back to the client
+    res.status(200).json({ response: responseText });
+  } catch (error) {
+    // Handle any errors that occur during the process
+    console.error("ERROR", error.message);
+    res.status(500).json({ error: error.message });
+  }
+}
